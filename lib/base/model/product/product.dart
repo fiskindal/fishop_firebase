@@ -1,3 +1,4 @@
+import 'package:fishop_firebase/base/model/customer_review/customer_review.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -19,12 +20,12 @@ class Product {
   final String? title;
   @Max(5.0)
   final double? rating;
-  final String? type;
+
   final int? stockCount;
   final String? size;
   final String? productName;
   final String? description;
-  final List<String>? customerReview;
+  final List<CustomerReview>? customerReviews;
   final bool? trendProduct;
   final int? unitPrice;
   final String? category;
@@ -32,12 +33,11 @@ class Product {
   Product({
     required this.title,
     required this.rating,
-    required this.type,
     required this.stockCount,
     required this.size,
     required this.productName,
     required this.description,
-    this.customerReview,
+    this.customerReviews,
     required this.trendProduct,
     required this.unitPrice,
     required this.id,
