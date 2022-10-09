@@ -138,7 +138,6 @@ abstract class ProductDocumentReference
     bool? trendProduct,
     int? unitPrice,
     String? category,
-    String? storeName,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -157,7 +156,6 @@ abstract class ProductDocumentReference
     bool? trendProduct,
     int? unitPrice,
     String? category,
-    String? storeName,
   });
 }
 
@@ -216,7 +214,6 @@ class _$ProductDocumentReference
     Object? trendProduct = _sentinel,
     Object? unitPrice = _sentinel,
     Object? category = _sentinel,
-    Object? storeName = _sentinel,
   }) async {
     final json = {
       if (title != _sentinel) 'title': title as String?,
@@ -231,7 +228,6 @@ class _$ProductDocumentReference
       if (trendProduct != _sentinel) 'trendProduct': trendProduct as bool?,
       if (unitPrice != _sentinel) 'unitPrice': unitPrice as int?,
       if (category != _sentinel) 'category': category as String?,
-      if (storeName != _sentinel) 'storeName': storeName as String?,
     };
 
     return reference.update(json);
@@ -250,7 +246,6 @@ class _$ProductDocumentReference
     Object? trendProduct = _sentinel,
     Object? unitPrice = _sentinel,
     Object? category = _sentinel,
-    Object? storeName = _sentinel,
   }) {
     final json = {
       if (title != _sentinel) 'title': title as String?,
@@ -265,7 +260,6 @@ class _$ProductDocumentReference
       if (trendProduct != _sentinel) 'trendProduct': trendProduct as bool?,
       if (unitPrice != _sentinel) 'unitPrice': unitPrice as int?,
       if (category != _sentinel) 'category': category as String?,
-      if (storeName != _sentinel) 'storeName': storeName as String?,
     };
 
     transaction.update(reference, json);
@@ -508,17 +502,6 @@ abstract class ProductQuery
     List<String?>? whereIn,
     List<String?>? whereNotIn,
   });
-  ProductQuery whereStoreName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  });
 
   ProductQuery orderByDocumentId({
     bool descending = false,
@@ -653,18 +636,6 @@ abstract class ProductQuery
   });
 
   ProductQuery orderByCategory({
-    bool descending = false,
-    String? startAt,
-    String? startAfter,
-    String? endAt,
-    String? endBefore,
-    ProductDocumentSnapshot? startAtDocument,
-    ProductDocumentSnapshot? endAtDocument,
-    ProductDocumentSnapshot? endBeforeDocument,
-    ProductDocumentSnapshot? startAfterDocument,
-  });
-
-  ProductQuery orderByStoreName({
     bool descending = false,
     String? startAt,
     String? startAfter,
@@ -1181,35 +1152,6 @@ class _$ProductQuery extends QueryReference<Product, ProductQuerySnapshot>
       _collection,
       $referenceWithoutCursor: $referenceWithoutCursor.where(
         _$ProductFieldMap['category']!,
-        isEqualTo: isEqualTo,
-        isNotEqualTo: isNotEqualTo,
-        isLessThan: isLessThan,
-        isLessThanOrEqualTo: isLessThanOrEqualTo,
-        isGreaterThan: isGreaterThan,
-        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
-        isNull: isNull,
-        whereIn: whereIn,
-        whereNotIn: whereNotIn,
-      ),
-      $queryCursor: $queryCursor,
-    );
-  }
-
-  ProductQuery whereStoreName({
-    String? isEqualTo,
-    String? isNotEqualTo,
-    String? isLessThan,
-    String? isLessThanOrEqualTo,
-    String? isGreaterThan,
-    String? isGreaterThanOrEqualTo,
-    bool? isNull,
-    List<String?>? whereIn,
-    List<String?>? whereNotIn,
-  }) {
-    return _$ProductQuery(
-      _collection,
-      $referenceWithoutCursor: $referenceWithoutCursor.where(
-        _$ProductFieldMap['storeName']!,
         isEqualTo: isEqualTo,
         isNotEqualTo: isNotEqualTo,
         isLessThan: isLessThan,
@@ -2088,78 +2030,6 @@ class _$ProductQuery extends QueryReference<Product, ProductQuerySnapshot>
     );
   }
 
-  ProductQuery orderByStoreName({
-    bool descending = false,
-    Object? startAt = _sentinel,
-    Object? startAfter = _sentinel,
-    Object? endAt = _sentinel,
-    Object? endBefore = _sentinel,
-    ProductDocumentSnapshot? startAtDocument,
-    ProductDocumentSnapshot? endAtDocument,
-    ProductDocumentSnapshot? endBeforeDocument,
-    ProductDocumentSnapshot? startAfterDocument,
-  }) {
-    final query = $referenceWithoutCursor
-        .orderBy(_$ProductFieldMap['storeName']!, descending: descending);
-    var queryCursor = $queryCursor;
-
-    if (startAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAt: const [],
-        startAtDocumentSnapshot: startAtDocument.snapshot,
-      );
-    }
-    if (startAfterDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: const [],
-        startAfterDocumentSnapshot: startAfterDocument.snapshot,
-      );
-    }
-    if (endAtDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endAt: const [],
-        endAtDocumentSnapshot: endAtDocument.snapshot,
-      );
-    }
-    if (endBeforeDocument != null) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: const [],
-        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
-      );
-    }
-
-    if (startAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAt: [...queryCursor.startAt, startAt],
-        startAtDocumentSnapshot: null,
-      );
-    }
-    if (startAfter != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        startAfter: [...queryCursor.startAfter, startAfter],
-        startAfterDocumentSnapshot: null,
-      );
-    }
-    if (endAt != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endAt: [...queryCursor.endAt, endAt],
-        endAtDocumentSnapshot: null,
-      );
-    }
-    if (endBefore != _sentinel) {
-      queryCursor = queryCursor.copyWith(
-        endBefore: [...queryCursor.endBefore, endBefore],
-        endBeforeDocumentSnapshot: null,
-      );
-    }
-
-    return _$ProductQuery(
-      _collection,
-      $referenceWithoutCursor: query,
-      $queryCursor: queryCursor,
-    );
-  }
-
   @override
   bool operator ==(Object other) {
     return other is _$ProductQuery &&
@@ -2232,8 +2102,6 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       unitPrice: json['unitPrice'] as int?,
       id: json['id'] as String,
       category: json['category'] as String?,
-      storeName: json['storeName'] as String?,
-      storeId: json['storeId'] as String?,
     );
 
 const _$ProductFieldMap = <String, String>{
@@ -2249,8 +2117,6 @@ const _$ProductFieldMap = <String, String>{
   'trendProduct': 'trendProduct',
   'unitPrice': 'unitPrice',
   'category': 'category',
-  'storeName': 'storeName',
-  'storeId': 'storeId',
 };
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -2266,6 +2132,4 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'trendProduct': instance.trendProduct,
       'unitPrice': instance.unitPrice,
       'category': instance.category,
-      'storeName': instance.storeName,
-      'storeId': instance.storeId,
     };

@@ -28,9 +28,6 @@ class Product {
   final bool? trendProduct;
   final int? unitPrice;
   final String? category;
-  final String? storeName;
-  @Id()
-  final String? storeId;
 
   Product({
     required this.title,
@@ -45,8 +42,6 @@ class Product {
     required this.unitPrice,
     required this.id,
     required this.category,
-    required this.storeName,
-    required this.storeId,
   }) {
     _$assertProduct(this);
   }
