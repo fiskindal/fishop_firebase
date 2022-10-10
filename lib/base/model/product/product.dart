@@ -16,7 +16,7 @@ const firestoreSerializable = JsonSerializable(
 @firestoreSerializable
 class Product {
   @Id()
-  final String id;
+  final String? id;
   final String? title;
   @Max(5.0)
   final double? rating;
@@ -32,15 +32,15 @@ class Product {
 
   Product({
     required this.title,
-    required this.rating,
+    this.rating,
     required this.stockCount,
     required this.size,
     required this.productName,
     required this.description,
     this.customerReviews,
-    required this.trendProduct,
+    this.trendProduct,
     required this.unitPrice,
-    required this.id,
+    this.id,
     required this.category,
   }) {
     _$assertProduct(this);

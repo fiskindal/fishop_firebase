@@ -1837,7 +1837,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
           .toList(),
       trendProduct: json['trendProduct'] as bool?,
       unitPrice: json['unitPrice'] as int?,
-      id: json['id'] as String,
+      id: json['id'] as String?,
       category: json['category'] as String?,
     );
 
