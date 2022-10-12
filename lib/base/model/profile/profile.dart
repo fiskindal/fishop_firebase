@@ -20,7 +20,8 @@ class Profile {
       required this.surName,
       required this.identity,
       this.phoneNumber,
-      this.email});
+      this.email,
+      this.giftCodes});
   @Id()
   final String? id;
   final List<AddressBook> addressBook;
@@ -29,6 +30,7 @@ class Profile {
   final String? identity;
   final String? phoneNumber;
   final String? email;
+  final List<String?>? giftCodes;
   factory Profile.fromJson(Map<String, Object?> json) =>
       _$ProfileFromJson(json);
   Map<String, Object?> toJson() => _$ProfileToJson(this);

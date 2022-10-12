@@ -132,6 +132,7 @@ abstract class ProfileDocumentReference
     String? identity,
     String? phoneNumber,
     String? email,
+    List<String?>? giftCodes,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -144,6 +145,7 @@ abstract class ProfileDocumentReference
     String? identity,
     String? phoneNumber,
     String? email,
+    List<String?>? giftCodes,
   });
 }
 
@@ -196,6 +198,7 @@ class _$ProfileDocumentReference
     Object? identity = _sentinel,
     Object? phoneNumber = _sentinel,
     Object? email = _sentinel,
+    Object? giftCodes = _sentinel,
   }) async {
     final json = {
       if (name != _sentinel) 'name': name as String?,
@@ -203,6 +206,7 @@ class _$ProfileDocumentReference
       if (identity != _sentinel) 'identity': identity as String?,
       if (phoneNumber != _sentinel) 'phoneNumber': phoneNumber as String?,
       if (email != _sentinel) 'email': email as String?,
+      if (giftCodes != _sentinel) 'giftCodes': giftCodes as List<String?>?,
     };
 
     return reference.update(json);
@@ -215,6 +219,7 @@ class _$ProfileDocumentReference
     Object? identity = _sentinel,
     Object? phoneNumber = _sentinel,
     Object? email = _sentinel,
+    Object? giftCodes = _sentinel,
   }) {
     final json = {
       if (name != _sentinel) 'name': name as String?,
@@ -222,6 +227,7 @@ class _$ProfileDocumentReference
       if (identity != _sentinel) 'identity': identity as String?,
       if (phoneNumber != _sentinel) 'phoneNumber': phoneNumber as String?,
       if (email != _sentinel) 'email': email as String?,
+      if (giftCodes != _sentinel) 'giftCodes': giftCodes as List<String?>?,
     };
 
     transaction.update(reference, json);
@@ -398,6 +404,17 @@ abstract class ProfileQuery
     List<String?>? whereIn,
     List<String?>? whereNotIn,
   });
+  ProfileQuery whereGiftCodes({
+    List<String?>? isEqualTo,
+    List<String?>? isNotEqualTo,
+    List<String?>? isLessThan,
+    List<String?>? isLessThanOrEqualTo,
+    List<String?>? isGreaterThan,
+    List<String?>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String?>? arrayContainsAny,
+  });
 
   ProfileQuery orderByDocumentId({
     bool descending = false,
@@ -465,6 +482,18 @@ abstract class ProfileQuery
     String? startAfter,
     String? endAt,
     String? endBefore,
+    ProfileDocumentSnapshot? startAtDocument,
+    ProfileDocumentSnapshot? endAtDocument,
+    ProfileDocumentSnapshot? endBeforeDocument,
+    ProfileDocumentSnapshot? startAfterDocument,
+  });
+
+  ProfileQuery orderByGiftCodes({
+    bool descending = false,
+    List<String?>? startAt,
+    List<String?>? startAfter,
+    List<String?>? endAt,
+    List<String?>? endBefore,
     ProfileDocumentSnapshot? startAtDocument,
     ProfileDocumentSnapshot? endAtDocument,
     ProfileDocumentSnapshot? endBeforeDocument,
@@ -811,6 +840,35 @@ class _$ProfileQuery extends QueryReference<Profile, ProfileQuerySnapshot>
         isNull: isNull,
         whereIn: whereIn,
         whereNotIn: whereNotIn,
+      ),
+      $queryCursor: $queryCursor,
+    );
+  }
+
+  ProfileQuery whereGiftCodes({
+    List<String?>? isEqualTo,
+    List<String?>? isNotEqualTo,
+    List<String?>? isLessThan,
+    List<String?>? isLessThanOrEqualTo,
+    List<String?>? isGreaterThan,
+    List<String?>? isGreaterThanOrEqualTo,
+    bool? isNull,
+    String? arrayContains,
+    List<String?>? arrayContainsAny,
+  }) {
+    return _$ProfileQuery(
+      _collection,
+      $referenceWithoutCursor: $referenceWithoutCursor.where(
+        _$ProfileFieldMap['giftCodes']!,
+        isEqualTo: isEqualTo,
+        isNotEqualTo: isNotEqualTo,
+        isLessThan: isLessThan,
+        isLessThanOrEqualTo: isLessThanOrEqualTo,
+        isGreaterThan: isGreaterThan,
+        isGreaterThanOrEqualTo: isGreaterThanOrEqualTo,
+        isNull: isNull,
+        arrayContains: arrayContains,
+        arrayContainsAny: arrayContainsAny,
       ),
       $queryCursor: $queryCursor,
     );
@@ -1248,6 +1306,78 @@ class _$ProfileQuery extends QueryReference<Profile, ProfileQuerySnapshot>
     );
   }
 
+  ProfileQuery orderByGiftCodes({
+    bool descending = false,
+    Object? startAt = _sentinel,
+    Object? startAfter = _sentinel,
+    Object? endAt = _sentinel,
+    Object? endBefore = _sentinel,
+    ProfileDocumentSnapshot? startAtDocument,
+    ProfileDocumentSnapshot? endAtDocument,
+    ProfileDocumentSnapshot? endBeforeDocument,
+    ProfileDocumentSnapshot? startAfterDocument,
+  }) {
+    final query = $referenceWithoutCursor
+        .orderBy(_$ProfileFieldMap['giftCodes']!, descending: descending);
+    var queryCursor = $queryCursor;
+
+    if (startAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAt: const [],
+        startAtDocumentSnapshot: startAtDocument.snapshot,
+      );
+    }
+    if (startAfterDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: const [],
+        startAfterDocumentSnapshot: startAfterDocument.snapshot,
+      );
+    }
+    if (endAtDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endAt: const [],
+        endAtDocumentSnapshot: endAtDocument.snapshot,
+      );
+    }
+    if (endBeforeDocument != null) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: const [],
+        endBeforeDocumentSnapshot: endBeforeDocument.snapshot,
+      );
+    }
+
+    if (startAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAt: [...queryCursor.startAt, startAt],
+        startAtDocumentSnapshot: null,
+      );
+    }
+    if (startAfter != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        startAfter: [...queryCursor.startAfter, startAfter],
+        startAfterDocumentSnapshot: null,
+      );
+    }
+    if (endAt != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endAt: [...queryCursor.endAt, endAt],
+        endAtDocumentSnapshot: null,
+      );
+    }
+    if (endBefore != _sentinel) {
+      queryCursor = queryCursor.copyWith(
+        endBefore: [...queryCursor.endBefore, endBefore],
+        endBeforeDocumentSnapshot: null,
+      );
+    }
+
+    return _$ProfileQuery(
+      _collection,
+      $referenceWithoutCursor: query,
+      $queryCursor: queryCursor,
+    );
+  }
+
   @override
   bool operator ==(Object other) {
     return other is _$ProfileQuery &&
@@ -1307,6 +1437,9 @@ Profile _$ProfileFromJson(Map<String, dynamic> json) => Profile(
       identity: json['identity'] as String?,
       phoneNumber: json['phoneNumber'] as String?,
       email: json['email'] as String?,
+      giftCodes: (json['giftCodes'] as List<dynamic>?)
+          ?.map((e) => e as String?)
+          .toList(),
     );
 
 const _$ProfileFieldMap = <String, String>{
@@ -1317,6 +1450,7 @@ const _$ProfileFieldMap = <String, String>{
   'identity': 'identity',
   'phoneNumber': 'phoneNumber',
   'email': 'email',
+  'giftCodes': 'giftCodes',
 };
 
 Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
@@ -1327,4 +1461,5 @@ Map<String, dynamic> _$ProfileToJson(Profile instance) => <String, dynamic>{
       'identity': instance.identity,
       'phoneNumber': instance.phoneNumber,
       'email': instance.email,
+      'giftCodes': instance.giftCodes,
     };

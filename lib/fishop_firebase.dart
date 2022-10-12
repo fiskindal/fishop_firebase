@@ -6,3 +6,4 @@ export 'base/model/profile/profile.dart';
 export 'base/model/user/user.dart';
 
 export 'base/services/auth_service.dart';
+export 'base/services/storage_service.dart';

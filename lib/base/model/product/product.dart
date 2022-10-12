@@ -29,20 +29,21 @@ class Product {
   final bool? trendProduct;
   final int? unitPrice;
   final String? category;
+  final String? imgUrl;
 
-  Product({
-    required this.title,
-    this.rating,
-    required this.stockCount,
-    required this.size,
-    required this.productName,
-    required this.description,
-    this.customerReviews,
-    this.trendProduct,
-    required this.unitPrice,
-    this.id,
-    required this.category,
-  }) {
+  Product(
+      {required this.title,
+      this.rating,
+      required this.stockCount,
+      required this.size,
+      required this.productName,
+      required this.description,
+      this.customerReviews,
+      this.trendProduct,
+      required this.unitPrice,
+      this.id,
+      required this.category,
+      this.imgUrl}) {
     _$assertProduct(this);
   }
   factory Product.fromJson(Map<String, Object?> json) =>
