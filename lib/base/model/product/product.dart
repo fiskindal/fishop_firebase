@@ -29,7 +29,7 @@ class Product {
   final bool? trendProduct;
   final int? unitPrice;
   final String? category;
-  final String? imgUrl;
+  String? imgUrl;
 
   Product(
       {required this.title,
