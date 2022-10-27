@@ -131,17 +131,29 @@ abstract class AddressBookDocumentReference extends FirestoreDocumentReference<
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String? addressType,
+    FieldValue addressTypeFieldValue,
     String? address,
+    FieldValue addressFieldValue,
     String? addressTitle,
+    FieldValue addressTitleFieldValue,
     String? apartmentName,
+    FieldValue apartmentNameFieldValue,
     String? floor,
+    FieldValue floorFieldValue,
     String? apartmentNumber,
+    FieldValue apartmentNumberFieldValue,
     String? phoneNumber,
+    FieldValue phoneNumberFieldValue,
     String? neighbourhood,
+    FieldValue neighbourhoodFieldValue,
     String? province,
+    FieldValue provinceFieldValue,
     String? district,
+    FieldValue districtFieldValue,
     String? descriptionOfTheAddress,
+    FieldValue descriptionOfTheAddressFieldValue,
     int? postCode,
+    FieldValue postCodeFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -150,17 +162,29 @@ abstract class AddressBookDocumentReference extends FirestoreDocumentReference<
   void transactionUpdate(
     Transaction transaction, {
     String? addressType,
+    FieldValue addressTypeFieldValue,
     String? address,
+    FieldValue addressFieldValue,
     String? addressTitle,
+    FieldValue addressTitleFieldValue,
     String? apartmentName,
+    FieldValue apartmentNameFieldValue,
     String? floor,
+    FieldValue floorFieldValue,
     String? apartmentNumber,
+    FieldValue apartmentNumberFieldValue,
     String? phoneNumber,
+    FieldValue phoneNumberFieldValue,
     String? neighbourhood,
+    FieldValue neighbourhoodFieldValue,
     String? province,
+    FieldValue provinceFieldValue,
     String? district,
+    FieldValue districtFieldValue,
     String? descriptionOfTheAddress,
+    FieldValue descriptionOfTheAddressFieldValue,
     int? postCode,
+    FieldValue postCodeFieldValue,
   });
 }
 
@@ -209,33 +233,111 @@ class _$AddressBookDocumentReference
 
   Future<void> update({
     Object? addressType = _sentinel,
+    FieldValue? addressTypeFieldValue,
     Object? address = _sentinel,
+    FieldValue? addressFieldValue,
     Object? addressTitle = _sentinel,
+    FieldValue? addressTitleFieldValue,
     Object? apartmentName = _sentinel,
+    FieldValue? apartmentNameFieldValue,
     Object? floor = _sentinel,
+    FieldValue? floorFieldValue,
     Object? apartmentNumber = _sentinel,
+    FieldValue? apartmentNumberFieldValue,
     Object? phoneNumber = _sentinel,
+    FieldValue? phoneNumberFieldValue,
     Object? neighbourhood = _sentinel,
+    FieldValue? neighbourhoodFieldValue,
     Object? province = _sentinel,
+    FieldValue? provinceFieldValue,
     Object? district = _sentinel,
+    FieldValue? districtFieldValue,
     Object? descriptionOfTheAddress = _sentinel,
+    FieldValue? descriptionOfTheAddressFieldValue,
     Object? postCode = _sentinel,
+    FieldValue? postCodeFieldValue,
   }) async {
+    assert(
+      addressType == _sentinel || addressTypeFieldValue == null,
+      "Cannot specify both addressType and addressTypeFieldValue",
+    );
+    assert(
+      address == _sentinel || addressFieldValue == null,
+      "Cannot specify both address and addressFieldValue",
+    );
+    assert(
+      addressTitle == _sentinel || addressTitleFieldValue == null,
+      "Cannot specify both addressTitle and addressTitleFieldValue",
+    );
+    assert(
+      apartmentName == _sentinel || apartmentNameFieldValue == null,
+      "Cannot specify both apartmentName and apartmentNameFieldValue",
+    );
+    assert(
+      floor == _sentinel || floorFieldValue == null,
+      "Cannot specify both floor and floorFieldValue",
+    );
+    assert(
+      apartmentNumber == _sentinel || apartmentNumberFieldValue == null,
+      "Cannot specify both apartmentNumber and apartmentNumberFieldValue",
+    );
+    assert(
+      phoneNumber == _sentinel || phoneNumberFieldValue == null,
+      "Cannot specify both phoneNumber and phoneNumberFieldValue",
+    );
+    assert(
+      neighbourhood == _sentinel || neighbourhoodFieldValue == null,
+      "Cannot specify both neighbourhood and neighbourhoodFieldValue",
+    );
+    assert(
+      province == _sentinel || provinceFieldValue == null,
+      "Cannot specify both province and provinceFieldValue",
+    );
+    assert(
+      district == _sentinel || districtFieldValue == null,
+      "Cannot specify both district and districtFieldValue",
+    );
+    assert(
+      descriptionOfTheAddress == _sentinel ||
+          descriptionOfTheAddressFieldValue == null,
+      "Cannot specify both descriptionOfTheAddress and descriptionOfTheAddressFieldValue",
+    );
+    assert(
+      postCode == _sentinel || postCodeFieldValue == null,
+      "Cannot specify both postCode and postCodeFieldValue",
+    );
     final json = {
       if (addressType != _sentinel) 'addressType': addressType as String?,
+      if (addressTypeFieldValue != null) 'addressType': addressTypeFieldValue,
       if (address != _sentinel) 'address': address as String?,
+      if (addressFieldValue != null) 'address': addressFieldValue,
       if (addressTitle != _sentinel) 'addressTitle': addressTitle as String?,
+      if (addressTitleFieldValue != null)
+        'addressTitle': addressTitleFieldValue,
       if (apartmentName != _sentinel) 'apartmentName': apartmentName as String?,
+      if (apartmentNameFieldValue != null)
+        'apartmentName': apartmentNameFieldValue,
       if (floor != _sentinel) 'floor': floor as String?,
+      if (floorFieldValue != null) 'floor': floorFieldValue,
       if (apartmentNumber != _sentinel)
         'apartmentNumber': apartmentNumber as String?,
+      if (apartmentNumberFieldValue != null)
+        'apartmentNumber': apartmentNumberFieldValue,
       if (phoneNumber != _sentinel) 'phoneNumber': phoneNumber as String?,
+      if (phoneNumberFieldValue != null) 'phoneNumber': phoneNumberFieldValue,
       if (neighbourhood != _sentinel) 'neighbourhood': neighbourhood as String?,
+      if (neighbourhoodFieldValue != null)
+        'neighbourhood': neighbourhoodFieldValue,
       if (province != _sentinel) 'province': province as String?,
+      if (provinceFieldValue != null) 'province': provinceFieldValue,
       if (district != _sentinel) 'district': district as String?,
+      if (districtFieldValue != null) 'district': districtFieldValue,
       if (descriptionOfTheAddress != _sentinel)
         'descriptionOfTheAddress': descriptionOfTheAddress as String?,
+      if (descriptionOfTheAddressFieldValue != null)
+        'descriptionOfTheAddress': descriptionOfTheAddressFieldValue,
       if (postCode != _sentinel) 'postCode': postCode as int?,
+      if (postCodeFieldValue != null) 'postCode': postCodeFieldValue,
     };
 
     return reference.update(json);
@@ -244,33 +346,111 @@ class _$AddressBookDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     Object? addressType = _sentinel,
+    FieldValue? addressTypeFieldValue,
     Object? address = _sentinel,
+    FieldValue? addressFieldValue,
     Object? addressTitle = _sentinel,
+    FieldValue? addressTitleFieldValue,
     Object? apartmentName = _sentinel,
+    FieldValue? apartmentNameFieldValue,
     Object? floor = _sentinel,
+    FieldValue? floorFieldValue,
     Object? apartmentNumber = _sentinel,
+    FieldValue? apartmentNumberFieldValue,
     Object? phoneNumber = _sentinel,
+    FieldValue? phoneNumberFieldValue,
     Object? neighbourhood = _sentinel,
+    FieldValue? neighbourhoodFieldValue,
     Object? province = _sentinel,
+    FieldValue? provinceFieldValue,
     Object? district = _sentinel,
+    FieldValue? districtFieldValue,
     Object? descriptionOfTheAddress = _sentinel,
+    FieldValue? descriptionOfTheAddressFieldValue,
     Object? postCode = _sentinel,
+    FieldValue? postCodeFieldValue,
   }) {
+    assert(
+      addressType == _sentinel || addressTypeFieldValue == null,
+      "Cannot specify both addressType and addressTypeFieldValue",
+    );
+    assert(
+      address == _sentinel || addressFieldValue == null,
+      "Cannot specify both address and addressFieldValue",
+    );
+    assert(
+      addressTitle == _sentinel || addressTitleFieldValue == null,
+      "Cannot specify both addressTitle and addressTitleFieldValue",
+    );
+    assert(
+      apartmentName == _sentinel || apartmentNameFieldValue == null,
+      "Cannot specify both apartmentName and apartmentNameFieldValue",
+    );
+    assert(
+      floor == _sentinel || floorFieldValue == null,
+      "Cannot specify both floor and floorFieldValue",
+    );
+    assert(
+      apartmentNumber == _sentinel || apartmentNumberFieldValue == null,
+      "Cannot specify both apartmentNumber and apartmentNumberFieldValue",
+    );
+    assert(
+      phoneNumber == _sentinel || phoneNumberFieldValue == null,
+      "Cannot specify both phoneNumber and phoneNumberFieldValue",
+    );
+    assert(
+      neighbourhood == _sentinel || neighbourhoodFieldValue == null,
+      "Cannot specify both neighbourhood and neighbourhoodFieldValue",
+    );
+    assert(
+      province == _sentinel || provinceFieldValue == null,
+      "Cannot specify both province and provinceFieldValue",
+    );
+    assert(
+      district == _sentinel || districtFieldValue == null,
+      "Cannot specify both district and districtFieldValue",
+    );
+    assert(
+      descriptionOfTheAddress == _sentinel ||
+          descriptionOfTheAddressFieldValue == null,
+      "Cannot specify both descriptionOfTheAddress and descriptionOfTheAddressFieldValue",
+    );
+    assert(
+      postCode == _sentinel || postCodeFieldValue == null,
+      "Cannot specify both postCode and postCodeFieldValue",
+    );
     final json = {
       if (addressType != _sentinel) 'addressType': addressType as String?,
+      if (addressTypeFieldValue != null) 'addressType': addressTypeFieldValue,
       if (address != _sentinel) 'address': address as String?,
+      if (addressFieldValue != null) 'address': addressFieldValue,
       if (addressTitle != _sentinel) 'addressTitle': addressTitle as String?,
+      if (addressTitleFieldValue != null)
+        'addressTitle': addressTitleFieldValue,
       if (apartmentName != _sentinel) 'apartmentName': apartmentName as String?,
+      if (apartmentNameFieldValue != null)
+        'apartmentName': apartmentNameFieldValue,
       if (floor != _sentinel) 'floor': floor as String?,
+      if (floorFieldValue != null) 'floor': floorFieldValue,
       if (apartmentNumber != _sentinel)
         'apartmentNumber': apartmentNumber as String?,
+      if (apartmentNumberFieldValue != null)
+        'apartmentNumber': apartmentNumberFieldValue,
       if (phoneNumber != _sentinel) 'phoneNumber': phoneNumber as String?,
+      if (phoneNumberFieldValue != null) 'phoneNumber': phoneNumberFieldValue,
       if (neighbourhood != _sentinel) 'neighbourhood': neighbourhood as String?,
+      if (neighbourhoodFieldValue != null)
+        'neighbourhood': neighbourhoodFieldValue,
       if (province != _sentinel) 'province': province as String?,
+      if (provinceFieldValue != null) 'province': provinceFieldValue,
       if (district != _sentinel) 'district': district as String?,
+      if (districtFieldValue != null) 'district': districtFieldValue,
       if (descriptionOfTheAddress != _sentinel)
         'descriptionOfTheAddress': descriptionOfTheAddress as String?,
+      if (descriptionOfTheAddressFieldValue != null)
+        'descriptionOfTheAddress': descriptionOfTheAddressFieldValue,
       if (postCode != _sentinel) 'postCode': postCode as int?,
+      if (postCodeFieldValue != null) 'postCode': postCodeFieldValue,
     };
 
     transaction.update(reference, json);

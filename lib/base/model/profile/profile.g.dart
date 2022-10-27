@@ -128,11 +128,17 @@ abstract class ProfileDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String? name,
+    FieldValue nameFieldValue,
     String? surName,
+    FieldValue surNameFieldValue,
     String? identity,
+    FieldValue identityFieldValue,
     String? phoneNumber,
+    FieldValue phoneNumberFieldValue,
     String? email,
+    FieldValue emailFieldValue,
     List<String?>? giftCodes,
+    FieldValue giftCodesFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -141,11 +147,17 @@ abstract class ProfileDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String? name,
+    FieldValue nameFieldValue,
     String? surName,
+    FieldValue surNameFieldValue,
     String? identity,
+    FieldValue identityFieldValue,
     String? phoneNumber,
+    FieldValue phoneNumberFieldValue,
     String? email,
+    FieldValue emailFieldValue,
     List<String?>? giftCodes,
+    FieldValue giftCodesFieldValue,
   });
 }
 
@@ -194,19 +206,55 @@ class _$ProfileDocumentReference
 
   Future<void> update({
     Object? name = _sentinel,
+    FieldValue? nameFieldValue,
     Object? surName = _sentinel,
+    FieldValue? surNameFieldValue,
     Object? identity = _sentinel,
+    FieldValue? identityFieldValue,
     Object? phoneNumber = _sentinel,
+    FieldValue? phoneNumberFieldValue,
     Object? email = _sentinel,
+    FieldValue? emailFieldValue,
     Object? giftCodes = _sentinel,
+    FieldValue? giftCodesFieldValue,
   }) async {
+    assert(
+      name == _sentinel || nameFieldValue == null,
+      "Cannot specify both name and nameFieldValue",
+    );
+    assert(
+      surName == _sentinel || surNameFieldValue == null,
+      "Cannot specify both surName and surNameFieldValue",
+    );
+    assert(
+      identity == _sentinel || identityFieldValue == null,
+      "Cannot specify both identity and identityFieldValue",
+    );
+    assert(
+      phoneNumber == _sentinel || phoneNumberFieldValue == null,
+      "Cannot specify both phoneNumber and phoneNumberFieldValue",
+    );
+    assert(
+      email == _sentinel || emailFieldValue == null,
+      "Cannot specify both email and emailFieldValue",
+    );
+    assert(
+      giftCodes == _sentinel || giftCodesFieldValue == null,
+      "Cannot specify both giftCodes and giftCodesFieldValue",
+    );
     final json = {
       if (name != _sentinel) 'name': name as String?,
+      if (nameFieldValue != null) 'name': nameFieldValue,
       if (surName != _sentinel) 'surName': surName as String?,
+      if (surNameFieldValue != null) 'surName': surNameFieldValue,
       if (identity != _sentinel) 'identity': identity as String?,
+      if (identityFieldValue != null) 'identity': identityFieldValue,
       if (phoneNumber != _sentinel) 'phoneNumber': phoneNumber as String?,
+      if (phoneNumberFieldValue != null) 'phoneNumber': phoneNumberFieldValue,
       if (email != _sentinel) 'email': email as String?,
+      if (emailFieldValue != null) 'email': emailFieldValue,
       if (giftCodes != _sentinel) 'giftCodes': giftCodes as List<String?>?,
+      if (giftCodesFieldValue != null) 'giftCodes': giftCodesFieldValue,
     };
 
     return reference.update(json);
@@ -215,19 +263,55 @@ class _$ProfileDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     Object? name = _sentinel,
+    FieldValue? nameFieldValue,
     Object? surName = _sentinel,
+    FieldValue? surNameFieldValue,
     Object? identity = _sentinel,
+    FieldValue? identityFieldValue,
     Object? phoneNumber = _sentinel,
+    FieldValue? phoneNumberFieldValue,
     Object? email = _sentinel,
+    FieldValue? emailFieldValue,
     Object? giftCodes = _sentinel,
+    FieldValue? giftCodesFieldValue,
   }) {
+    assert(
+      name == _sentinel || nameFieldValue == null,
+      "Cannot specify both name and nameFieldValue",
+    );
+    assert(
+      surName == _sentinel || surNameFieldValue == null,
+      "Cannot specify both surName and surNameFieldValue",
+    );
+    assert(
+      identity == _sentinel || identityFieldValue == null,
+      "Cannot specify both identity and identityFieldValue",
+    );
+    assert(
+      phoneNumber == _sentinel || phoneNumberFieldValue == null,
+      "Cannot specify both phoneNumber and phoneNumberFieldValue",
+    );
+    assert(
+      email == _sentinel || emailFieldValue == null,
+      "Cannot specify both email and emailFieldValue",
+    );
+    assert(
+      giftCodes == _sentinel || giftCodesFieldValue == null,
+      "Cannot specify both giftCodes and giftCodesFieldValue",
+    );
     final json = {
       if (name != _sentinel) 'name': name as String?,
+      if (nameFieldValue != null) 'name': nameFieldValue,
       if (surName != _sentinel) 'surName': surName as String?,
+      if (surNameFieldValue != null) 'surName': surNameFieldValue,
       if (identity != _sentinel) 'identity': identity as String?,
+      if (identityFieldValue != null) 'identity': identityFieldValue,
       if (phoneNumber != _sentinel) 'phoneNumber': phoneNumber as String?,
+      if (phoneNumberFieldValue != null) 'phoneNumber': phoneNumberFieldValue,
       if (email != _sentinel) 'email': email as String?,
+      if (emailFieldValue != null) 'email': emailFieldValue,
       if (giftCodes != _sentinel) 'giftCodes': giftCodes as List<String?>?,
+      if (giftCodesFieldValue != null) 'giftCodes': giftCodesFieldValue,
     };
 
     transaction.update(reference, json);

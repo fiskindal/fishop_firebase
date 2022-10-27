@@ -128,15 +128,25 @@ abstract class ProductDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String? title,
+    FieldValue titleFieldValue,
     double? rating,
+    FieldValue ratingFieldValue,
     int? stockCount,
+    FieldValue stockCountFieldValue,
     String? size,
+    FieldValue sizeFieldValue,
     String? productName,
+    FieldValue productNameFieldValue,
     String? description,
+    FieldValue descriptionFieldValue,
     bool? trendProduct,
+    FieldValue trendProductFieldValue,
     int? unitPrice,
+    FieldValue unitPriceFieldValue,
     String? category,
+    FieldValue categoryFieldValue,
     String? imgUrl,
+    FieldValue imgUrlFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -145,15 +155,25 @@ abstract class ProductDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String? title,
+    FieldValue titleFieldValue,
     double? rating,
+    FieldValue ratingFieldValue,
     int? stockCount,
+    FieldValue stockCountFieldValue,
     String? size,
+    FieldValue sizeFieldValue,
     String? productName,
+    FieldValue productNameFieldValue,
     String? description,
+    FieldValue descriptionFieldValue,
     bool? trendProduct,
+    FieldValue trendProductFieldValue,
     int? unitPrice,
+    FieldValue unitPriceFieldValue,
     String? category,
+    FieldValue categoryFieldValue,
     String? imgUrl,
+    FieldValue imgUrlFieldValue,
   });
 }
 
@@ -202,27 +222,88 @@ class _$ProductDocumentReference
 
   Future<void> update({
     Object? title = _sentinel,
+    FieldValue? titleFieldValue,
     Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
     Object? stockCount = _sentinel,
+    FieldValue? stockCountFieldValue,
     Object? size = _sentinel,
+    FieldValue? sizeFieldValue,
     Object? productName = _sentinel,
+    FieldValue? productNameFieldValue,
     Object? description = _sentinel,
+    FieldValue? descriptionFieldValue,
     Object? trendProduct = _sentinel,
+    FieldValue? trendProductFieldValue,
     Object? unitPrice = _sentinel,
+    FieldValue? unitPriceFieldValue,
     Object? category = _sentinel,
+    FieldValue? categoryFieldValue,
     Object? imgUrl = _sentinel,
+    FieldValue? imgUrlFieldValue,
   }) async {
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
+    assert(
+      stockCount == _sentinel || stockCountFieldValue == null,
+      "Cannot specify both stockCount and stockCountFieldValue",
+    );
+    assert(
+      size == _sentinel || sizeFieldValue == null,
+      "Cannot specify both size and sizeFieldValue",
+    );
+    assert(
+      productName == _sentinel || productNameFieldValue == null,
+      "Cannot specify both productName and productNameFieldValue",
+    );
+    assert(
+      description == _sentinel || descriptionFieldValue == null,
+      "Cannot specify both description and descriptionFieldValue",
+    );
+    assert(
+      trendProduct == _sentinel || trendProductFieldValue == null,
+      "Cannot specify both trendProduct and trendProductFieldValue",
+    );
+    assert(
+      unitPrice == _sentinel || unitPriceFieldValue == null,
+      "Cannot specify both unitPrice and unitPriceFieldValue",
+    );
+    assert(
+      category == _sentinel || categoryFieldValue == null,
+      "Cannot specify both category and categoryFieldValue",
+    );
+    assert(
+      imgUrl == _sentinel || imgUrlFieldValue == null,
+      "Cannot specify both imgUrl and imgUrlFieldValue",
+    );
     final json = {
       if (title != _sentinel) 'title': title as String?,
+      if (titleFieldValue != null) 'title': titleFieldValue,
       if (rating != _sentinel) 'rating': rating as double?,
+      if (ratingFieldValue != null) 'rating': ratingFieldValue,
       if (stockCount != _sentinel) 'stockCount': stockCount as int?,
+      if (stockCountFieldValue != null) 'stockCount': stockCountFieldValue,
       if (size != _sentinel) 'size': size as String?,
+      if (sizeFieldValue != null) 'size': sizeFieldValue,
       if (productName != _sentinel) 'productName': productName as String?,
+      if (productNameFieldValue != null) 'productName': productNameFieldValue,
       if (description != _sentinel) 'description': description as String?,
+      if (descriptionFieldValue != null) 'description': descriptionFieldValue,
       if (trendProduct != _sentinel) 'trendProduct': trendProduct as bool?,
+      if (trendProductFieldValue != null)
+        'trendProduct': trendProductFieldValue,
       if (unitPrice != _sentinel) 'unitPrice': unitPrice as int?,
+      if (unitPriceFieldValue != null) 'unitPrice': unitPriceFieldValue,
       if (category != _sentinel) 'category': category as String?,
+      if (categoryFieldValue != null) 'category': categoryFieldValue,
       if (imgUrl != _sentinel) 'imgUrl': imgUrl as String?,
+      if (imgUrlFieldValue != null) 'imgUrl': imgUrlFieldValue,
     };
 
     return reference.update(json);
@@ -231,27 +312,88 @@ class _$ProductDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     Object? title = _sentinel,
+    FieldValue? titleFieldValue,
     Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
     Object? stockCount = _sentinel,
+    FieldValue? stockCountFieldValue,
     Object? size = _sentinel,
+    FieldValue? sizeFieldValue,
     Object? productName = _sentinel,
+    FieldValue? productNameFieldValue,
     Object? description = _sentinel,
+    FieldValue? descriptionFieldValue,
     Object? trendProduct = _sentinel,
+    FieldValue? trendProductFieldValue,
     Object? unitPrice = _sentinel,
+    FieldValue? unitPriceFieldValue,
     Object? category = _sentinel,
+    FieldValue? categoryFieldValue,
     Object? imgUrl = _sentinel,
+    FieldValue? imgUrlFieldValue,
   }) {
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
+    assert(
+      stockCount == _sentinel || stockCountFieldValue == null,
+      "Cannot specify both stockCount and stockCountFieldValue",
+    );
+    assert(
+      size == _sentinel || sizeFieldValue == null,
+      "Cannot specify both size and sizeFieldValue",
+    );
+    assert(
+      productName == _sentinel || productNameFieldValue == null,
+      "Cannot specify both productName and productNameFieldValue",
+    );
+    assert(
+      description == _sentinel || descriptionFieldValue == null,
+      "Cannot specify both description and descriptionFieldValue",
+    );
+    assert(
+      trendProduct == _sentinel || trendProductFieldValue == null,
+      "Cannot specify both trendProduct and trendProductFieldValue",
+    );
+    assert(
+      unitPrice == _sentinel || unitPriceFieldValue == null,
+      "Cannot specify both unitPrice and unitPriceFieldValue",
+    );
+    assert(
+      category == _sentinel || categoryFieldValue == null,
+      "Cannot specify both category and categoryFieldValue",
+    );
+    assert(
+      imgUrl == _sentinel || imgUrlFieldValue == null,
+      "Cannot specify both imgUrl and imgUrlFieldValue",
+    );
     final json = {
       if (title != _sentinel) 'title': title as String?,
+      if (titleFieldValue != null) 'title': titleFieldValue,
       if (rating != _sentinel) 'rating': rating as double?,
+      if (ratingFieldValue != null) 'rating': ratingFieldValue,
       if (stockCount != _sentinel) 'stockCount': stockCount as int?,
+      if (stockCountFieldValue != null) 'stockCount': stockCountFieldValue,
       if (size != _sentinel) 'size': size as String?,
+      if (sizeFieldValue != null) 'size': sizeFieldValue,
       if (productName != _sentinel) 'productName': productName as String?,
+      if (productNameFieldValue != null) 'productName': productNameFieldValue,
       if (description != _sentinel) 'description': description as String?,
+      if (descriptionFieldValue != null) 'description': descriptionFieldValue,
       if (trendProduct != _sentinel) 'trendProduct': trendProduct as bool?,
+      if (trendProductFieldValue != null)
+        'trendProduct': trendProductFieldValue,
       if (unitPrice != _sentinel) 'unitPrice': unitPrice as int?,
+      if (unitPriceFieldValue != null) 'unitPrice': unitPriceFieldValue,
       if (category != _sentinel) 'category': category as String?,
+      if (categoryFieldValue != null) 'category': categoryFieldValue,
       if (imgUrl != _sentinel) 'imgUrl': imgUrl as String?,
+      if (imgUrlFieldValue != null) 'imgUrl': imgUrlFieldValue,
     };
 
     transaction.update(reference, json);
@@ -1962,9 +2104,6 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       size: json['size'] as String?,
       productName: json['productName'] as String?,
       description: json['description'] as String?,
-      customerReviews: (json['customerReviews'] as List<dynamic>?)
-          ?.map((e) => CustomerReview.fromJson(e as Map<String, dynamic>))
-          .toList(),
       trendProduct: json['trendProduct'] as bool?,
       unitPrice: json['unitPrice'] as int?,
       id: json['id'] as String?,
@@ -1980,7 +2119,6 @@ const _$ProductFieldMap = <String, String>{
   'size': 'size',
   'productName': 'productName',
   'description': 'description',
-  'customerReviews': 'customerReviews',
   'trendProduct': 'trendProduct',
   'unitPrice': 'unitPrice',
   'category': 'category',
@@ -1995,8 +2133,6 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'size': instance.size,
       'productName': instance.productName,
       'description': instance.description,
-      'customerReviews':
-          instance.customerReviews?.map((e) => e.toJson()).toList(),
       'trendProduct': instance.trendProduct,
       'unitPrice': instance.unitPrice,
       'category': instance.category,

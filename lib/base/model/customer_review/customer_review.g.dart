@@ -133,8 +133,11 @@ abstract class CustomerReviewDocumentReference
   /// If no document exists yet, the update will fail.
   Future<void> update({
     String? title,
+    FieldValue titleFieldValue,
     String? feedBack,
+    FieldValue feedBackFieldValue,
     String? rating,
+    FieldValue ratingFieldValue,
   });
 
   /// Updates fields in the current document using the transaction API.
@@ -143,8 +146,11 @@ abstract class CustomerReviewDocumentReference
   void transactionUpdate(
     Transaction transaction, {
     String? title,
+    FieldValue titleFieldValue,
     String? feedBack,
+    FieldValue feedBackFieldValue,
     String? rating,
+    FieldValue ratingFieldValue,
   });
 }
 
@@ -194,13 +200,31 @@ class _$CustomerReviewDocumentReference extends FirestoreDocumentReference<
 
   Future<void> update({
     Object? title = _sentinel,
+    FieldValue? titleFieldValue,
     Object? feedBack = _sentinel,
+    FieldValue? feedBackFieldValue,
     Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
   }) async {
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      feedBack == _sentinel || feedBackFieldValue == null,
+      "Cannot specify both feedBack and feedBackFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
     final json = {
       if (title != _sentinel) 'title': title as String?,
+      if (titleFieldValue != null) 'title': titleFieldValue,
       if (feedBack != _sentinel) 'feedBack': feedBack as String?,
+      if (feedBackFieldValue != null) 'feedBack': feedBackFieldValue,
       if (rating != _sentinel) 'rating': rating as String?,
+      if (ratingFieldValue != null) 'rating': ratingFieldValue,
     };
 
     return reference.update(json);
@@ -209,13 +233,31 @@ class _$CustomerReviewDocumentReference extends FirestoreDocumentReference<
   void transactionUpdate(
     Transaction transaction, {
     Object? title = _sentinel,
+    FieldValue? titleFieldValue,
     Object? feedBack = _sentinel,
+    FieldValue? feedBackFieldValue,
     Object? rating = _sentinel,
+    FieldValue? ratingFieldValue,
   }) {
+    assert(
+      title == _sentinel || titleFieldValue == null,
+      "Cannot specify both title and titleFieldValue",
+    );
+    assert(
+      feedBack == _sentinel || feedBackFieldValue == null,
+      "Cannot specify both feedBack and feedBackFieldValue",
+    );
+    assert(
+      rating == _sentinel || ratingFieldValue == null,
+      "Cannot specify both rating and ratingFieldValue",
+    );
     final json = {
       if (title != _sentinel) 'title': title as String?,
+      if (titleFieldValue != null) 'title': titleFieldValue,
       if (feedBack != _sentinel) 'feedBack': feedBack as String?,
+      if (feedBackFieldValue != null) 'feedBack': feedBackFieldValue,
       if (rating != _sentinel) 'rating': rating as String?,
+      if (ratingFieldValue != null) 'rating': ratingFieldValue,
     };
 
     transaction.update(reference, json);

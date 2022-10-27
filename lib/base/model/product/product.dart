@@ -8,10 +8,9 @@ part 'product.g.dart';
 final productsRef = ProductCollectionReference();
 
 const firestoreSerializable = JsonSerializable(
-  converters: firestoreJsonConverters,
-  explicitToJson: true,
-  createFieldMap: true,
-);
+    converters: firestoreJsonConverters,
+    explicitToJson: true,
+    createFieldMap: true);
 
 @firestoreSerializable
 class Product {
@@ -25,7 +24,6 @@ class Product {
   final String? size;
   final String? productName;
   final String? description;
-  final List<CustomerReview>? customerReviews;
   final bool? trendProduct;
   final int? unitPrice;
   final String? category;
@@ -38,7 +36,6 @@ class Product {
       required this.size,
       required this.productName,
       required this.description,
-      this.customerReviews,
       this.trendProduct,
       required this.unitPrice,
       this.id,

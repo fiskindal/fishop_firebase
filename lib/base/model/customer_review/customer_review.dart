@@ -1,10 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 part 'customer_review.g.dart';
-
-@Collection<CustomerReview>('customerReview')
-final productsRef = CustomerReviewCollectionReference();
 
 const firestoreSerializable = JsonSerializable(
   converters: firestoreJsonConverters,
@@ -12,6 +9,7 @@ const firestoreSerializable = JsonSerializable(
   createFieldMap: true,
 );
 
+@Collection<CustomerReview>('customerReview')
 @firestoreSerializable
 class CustomerReview {
   CustomerReview({
