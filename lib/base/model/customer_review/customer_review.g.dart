@@ -169,33 +169,18 @@ class _$CustomerReviewDocumentReference extends FirestoreDocumentReference<
 
   @override
   Stream<CustomerReviewDocumentSnapshot> snapshots() {
-    return reference.snapshots().map((snapshot) {
-      return CustomerReviewDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.snapshots().map(CustomerReviewDocumentSnapshot._);
   }
 
   @override
   Future<CustomerReviewDocumentSnapshot> get([GetOptions? options]) {
-    return reference.get(options).then((snapshot) {
-      return CustomerReviewDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.get(options).then(CustomerReviewDocumentSnapshot._);
   }
 
   @override
   Future<CustomerReviewDocumentSnapshot> transactionGet(
       Transaction transaction) {
-    return transaction.get(reference).then((snapshot) {
-      return CustomerReviewDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return transaction.get(reference).then(CustomerReviewDocumentSnapshot._);
   }
 
   Future<void> update({
@@ -273,27 +258,6 @@ class _$CustomerReviewDocumentReference extends FirestoreDocumentReference<
 
   @override
   int get hashCode => Object.hash(runtimeType, parent, id);
-}
-
-class CustomerReviewDocumentSnapshot
-    extends FirestoreDocumentSnapshot<CustomerReview> {
-  CustomerReviewDocumentSnapshot._(
-    this.snapshot,
-    this.data,
-  );
-
-  @override
-  final DocumentSnapshot<CustomerReview> snapshot;
-
-  @override
-  CustomerReviewDocumentReference get reference {
-    return CustomerReviewDocumentReference(
-      snapshot.reference,
-    );
-  }
-
-  @override
-  final CustomerReview? data;
 }
 
 abstract class CustomerReviewQuery
@@ -477,37 +441,18 @@ class _$CustomerReviewQuery
 
   final CollectionReference<Object?> _collection;
 
-  CustomerReviewQuerySnapshot _decodeSnapshot(
-    QuerySnapshot<CustomerReview> snapshot,
-  ) {
-    final docs = snapshot.docs.map((e) {
-      return CustomerReviewQueryDocumentSnapshot._(e, e.data());
-    }).toList();
-
-    final docChanges = snapshot.docChanges.map((change) {
-      return FirestoreDocumentChange<CustomerReviewDocumentSnapshot>(
-        type: change.type,
-        oldIndex: change.oldIndex,
-        newIndex: change.newIndex,
-        doc: CustomerReviewDocumentSnapshot._(change.doc, change.doc.data()),
-      );
-    }).toList();
-
-    return CustomerReviewQuerySnapshot._(
-      snapshot,
-      docs,
-      docChanges,
-    );
-  }
-
   @override
   Stream<CustomerReviewQuerySnapshot> snapshots([SnapshotOptions? options]) {
-    return reference.snapshots().map(_decodeSnapshot);
+    return reference
+        .snapshots()
+        .map(CustomerReviewQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
   Future<CustomerReviewQuerySnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(_decodeSnapshot);
+    return reference
+        .get(options)
+        .then(CustomerReviewQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
@@ -1049,6 +994,24 @@ class _$CustomerReviewQuery
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
+class CustomerReviewDocumentSnapshot
+    extends FirestoreDocumentSnapshot<CustomerReview> {
+  CustomerReviewDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<CustomerReview> snapshot;
+
+  @override
+  CustomerReviewDocumentReference get reference {
+    return CustomerReviewDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final CustomerReview? data;
+}
+
 class CustomerReviewQuerySnapshot extends FirestoreQuerySnapshot<CustomerReview,
     CustomerReviewQueryDocumentSnapshot> {
   CustomerReviewQuerySnapshot._(
@@ -1056,6 +1019,39 @@ class CustomerReviewQuerySnapshot extends FirestoreQuerySnapshot<CustomerReview,
     this.docs,
     this.docChanges,
   );
+
+  factory CustomerReviewQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<CustomerReview> snapshot,
+  ) {
+    final docs =
+        snapshot.docs.map(CustomerReviewQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        CustomerReviewDocumentSnapshot._,
+      );
+    }).toList();
+
+    return CustomerReviewQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<CustomerReviewDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    CustomerReviewDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<CustomerReviewDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
 
   final QuerySnapshot<CustomerReview> snapshot;
 
@@ -1070,18 +1066,18 @@ class CustomerReviewQuerySnapshot extends FirestoreQuerySnapshot<CustomerReview,
 class CustomerReviewQueryDocumentSnapshot
     extends FirestoreQueryDocumentSnapshot<CustomerReview>
     implements CustomerReviewDocumentSnapshot {
-  CustomerReviewQueryDocumentSnapshot._(this.snapshot, this.data);
+  CustomerReviewQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
   final QueryDocumentSnapshot<CustomerReview> snapshot;
 
   @override
+  final CustomerReview data;
+
+  @override
   CustomerReviewDocumentReference get reference {
     return CustomerReviewDocumentReference(snapshot.reference);
   }
-
-  @override
-  final CustomerReview data;
 }
 
 // **************************************************************************

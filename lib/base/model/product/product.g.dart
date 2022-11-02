@@ -192,32 +192,17 @@ class _$ProductDocumentReference
 
   @override
   Stream<ProductDocumentSnapshot> snapshots() {
-    return reference.snapshots().map((snapshot) {
-      return ProductDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.snapshots().map(ProductDocumentSnapshot._);
   }
 
   @override
   Future<ProductDocumentSnapshot> get([GetOptions? options]) {
-    return reference.get(options).then((snapshot) {
-      return ProductDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.get(options).then(ProductDocumentSnapshot._);
   }
 
   @override
   Future<ProductDocumentSnapshot> transactionGet(Transaction transaction) {
-    return transaction.get(reference).then((snapshot) {
-      return ProductDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return transaction.get(reference).then(ProductDocumentSnapshot._);
   }
 
   Future<void> update({
@@ -409,26 +394,6 @@ class _$ProductDocumentReference
 
   @override
   int get hashCode => Object.hash(runtimeType, parent, id);
-}
-
-class ProductDocumentSnapshot extends FirestoreDocumentSnapshot<Product> {
-  ProductDocumentSnapshot._(
-    this.snapshot,
-    this.data,
-  );
-
-  @override
-  final DocumentSnapshot<Product> snapshot;
-
-  @override
-  ProductDocumentReference get reference {
-    return ProductDocumentReference(
-      snapshot.reference,
-    );
-  }
-
-  @override
-  final Product? data;
 }
 
 abstract class ProductQuery
@@ -772,37 +737,14 @@ class _$ProductQuery extends QueryReference<Product, ProductQuerySnapshot>
 
   final CollectionReference<Object?> _collection;
 
-  ProductQuerySnapshot _decodeSnapshot(
-    QuerySnapshot<Product> snapshot,
-  ) {
-    final docs = snapshot.docs.map((e) {
-      return ProductQueryDocumentSnapshot._(e, e.data());
-    }).toList();
-
-    final docChanges = snapshot.docChanges.map((change) {
-      return FirestoreDocumentChange<ProductDocumentSnapshot>(
-        type: change.type,
-        oldIndex: change.oldIndex,
-        newIndex: change.newIndex,
-        doc: ProductDocumentSnapshot._(change.doc, change.doc.data()),
-      );
-    }).toList();
-
-    return ProductQuerySnapshot._(
-      snapshot,
-      docs,
-      docChanges,
-    );
-  }
-
   @override
   Stream<ProductQuerySnapshot> snapshots([SnapshotOptions? options]) {
-    return reference.snapshots().map(_decodeSnapshot);
+    return reference.snapshots().map(ProductQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
   Future<ProductQuerySnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(_decodeSnapshot);
+    return reference.get(options).then(ProductQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
@@ -2051,6 +1993,23 @@ class _$ProductQuery extends QueryReference<Product, ProductQuerySnapshot>
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
+class ProductDocumentSnapshot extends FirestoreDocumentSnapshot<Product> {
+  ProductDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<Product> snapshot;
+
+  @override
+  ProductDocumentReference get reference {
+    return ProductDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final Product? data;
+}
+
 class ProductQuerySnapshot
     extends FirestoreQuerySnapshot<Product, ProductQueryDocumentSnapshot> {
   ProductQuerySnapshot._(
@@ -2058,6 +2017,38 @@ class ProductQuerySnapshot
     this.docs,
     this.docChanges,
   );
+
+  factory ProductQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<Product> snapshot,
+  ) {
+    final docs = snapshot.docs.map(ProductQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        ProductDocumentSnapshot._,
+      );
+    }).toList();
+
+    return ProductQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<ProductDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    ProductDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<ProductDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
 
   final QuerySnapshot<Product> snapshot;
 
@@ -2071,18 +2062,18 @@ class ProductQuerySnapshot
 class ProductQueryDocumentSnapshot
     extends FirestoreQueryDocumentSnapshot<Product>
     implements ProductDocumentSnapshot {
-  ProductQueryDocumentSnapshot._(this.snapshot, this.data);
+  ProductQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
   final QueryDocumentSnapshot<Product> snapshot;
 
   @override
+  final Product data;
+
+  @override
   ProductDocumentReference get reference {
     return ProductDocumentReference(snapshot.reference);
   }
-
-  @override
-  final Product data;
 }
 
 // **************************************************************************

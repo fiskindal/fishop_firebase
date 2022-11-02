@@ -203,32 +203,17 @@ class _$AddressBookDocumentReference
 
   @override
   Stream<AddressBookDocumentSnapshot> snapshots() {
-    return reference.snapshots().map((snapshot) {
-      return AddressBookDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.snapshots().map(AddressBookDocumentSnapshot._);
   }
 
   @override
   Future<AddressBookDocumentSnapshot> get([GetOptions? options]) {
-    return reference.get(options).then((snapshot) {
-      return AddressBookDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.get(options).then(AddressBookDocumentSnapshot._);
   }
 
   @override
   Future<AddressBookDocumentSnapshot> transactionGet(Transaction transaction) {
-    return transaction.get(reference).then((snapshot) {
-      return AddressBookDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return transaction.get(reference).then(AddressBookDocumentSnapshot._);
   }
 
   Future<void> update({
@@ -466,27 +451,6 @@ class _$AddressBookDocumentReference
 
   @override
   int get hashCode => Object.hash(runtimeType, parent, id);
-}
-
-class AddressBookDocumentSnapshot
-    extends FirestoreDocumentSnapshot<AddressBook> {
-  AddressBookDocumentSnapshot._(
-    this.snapshot,
-    this.data,
-  );
-
-  @override
-  final DocumentSnapshot<AddressBook> snapshot;
-
-  @override
-  AddressBookDocumentReference get reference {
-    return AddressBookDocumentReference(
-      snapshot.reference,
-    );
-  }
-
-  @override
-  final AddressBook? data;
 }
 
 abstract class AddressBookQuery
@@ -877,37 +841,18 @@ class _$AddressBookQuery
 
   final CollectionReference<Object?> _collection;
 
-  AddressBookQuerySnapshot _decodeSnapshot(
-    QuerySnapshot<AddressBook> snapshot,
-  ) {
-    final docs = snapshot.docs.map((e) {
-      return AddressBookQueryDocumentSnapshot._(e, e.data());
-    }).toList();
-
-    final docChanges = snapshot.docChanges.map((change) {
-      return FirestoreDocumentChange<AddressBookDocumentSnapshot>(
-        type: change.type,
-        oldIndex: change.oldIndex,
-        newIndex: change.newIndex,
-        doc: AddressBookDocumentSnapshot._(change.doc, change.doc.data()),
-      );
-    }).toList();
-
-    return AddressBookQuerySnapshot._(
-      snapshot,
-      docs,
-      docChanges,
-    );
-  }
-
   @override
   Stream<AddressBookQuerySnapshot> snapshots([SnapshotOptions? options]) {
-    return reference.snapshots().map(_decodeSnapshot);
+    return reference
+        .snapshots()
+        .map(AddressBookQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
   Future<AddressBookQuerySnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(_decodeSnapshot);
+    return reference
+        .get(options)
+        .then(AddressBookQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
@@ -2363,6 +2308,24 @@ class _$AddressBookQuery
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
+class AddressBookDocumentSnapshot
+    extends FirestoreDocumentSnapshot<AddressBook> {
+  AddressBookDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<AddressBook> snapshot;
+
+  @override
+  AddressBookDocumentReference get reference {
+    return AddressBookDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final AddressBook? data;
+}
+
 class AddressBookQuerySnapshot extends FirestoreQuerySnapshot<AddressBook,
     AddressBookQueryDocumentSnapshot> {
   AddressBookQuerySnapshot._(
@@ -2370,6 +2333,38 @@ class AddressBookQuerySnapshot extends FirestoreQuerySnapshot<AddressBook,
     this.docs,
     this.docChanges,
   );
+
+  factory AddressBookQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<AddressBook> snapshot,
+  ) {
+    final docs = snapshot.docs.map(AddressBookQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        AddressBookDocumentSnapshot._,
+      );
+    }).toList();
+
+    return AddressBookQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<AddressBookDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    AddressBookDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<AddressBookDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
 
   final QuerySnapshot<AddressBook> snapshot;
 
@@ -2383,18 +2378,18 @@ class AddressBookQuerySnapshot extends FirestoreQuerySnapshot<AddressBook,
 class AddressBookQueryDocumentSnapshot
     extends FirestoreQueryDocumentSnapshot<AddressBook>
     implements AddressBookDocumentSnapshot {
-  AddressBookQueryDocumentSnapshot._(this.snapshot, this.data);
+  AddressBookQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
   final QueryDocumentSnapshot<AddressBook> snapshot;
 
   @override
+  final AddressBook data;
+
+  @override
   AddressBookDocumentReference get reference {
     return AddressBookDocumentReference(snapshot.reference);
   }
-
-  @override
-  final AddressBook data;
 }
 
 // **************************************************************************

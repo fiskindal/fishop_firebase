@@ -9,6 +9,8 @@ const firestoreSerializable = JsonSerializable(
   createFieldMap: true,
 );
 
+final customerRef = CustomerReviewCollectionReference();
+
 @Collection<CustomerReview>('customerReview')
 @firestoreSerializable
 class CustomerReview {

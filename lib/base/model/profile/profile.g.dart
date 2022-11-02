@@ -176,32 +176,17 @@ class _$ProfileDocumentReference
 
   @override
   Stream<ProfileDocumentSnapshot> snapshots() {
-    return reference.snapshots().map((snapshot) {
-      return ProfileDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.snapshots().map(ProfileDocumentSnapshot._);
   }
 
   @override
   Future<ProfileDocumentSnapshot> get([GetOptions? options]) {
-    return reference.get(options).then((snapshot) {
-      return ProfileDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return reference.get(options).then(ProfileDocumentSnapshot._);
   }
 
   @override
   Future<ProfileDocumentSnapshot> transactionGet(Transaction transaction) {
-    return transaction.get(reference).then((snapshot) {
-      return ProfileDocumentSnapshot._(
-        snapshot,
-        snapshot.data(),
-      );
-    });
+    return transaction.get(reference).then(ProfileDocumentSnapshot._);
   }
 
   Future<void> update({
@@ -327,26 +312,6 @@ class _$ProfileDocumentReference
 
   @override
   int get hashCode => Object.hash(runtimeType, parent, id);
-}
-
-class ProfileDocumentSnapshot extends FirestoreDocumentSnapshot<Profile> {
-  ProfileDocumentSnapshot._(
-    this.snapshot,
-    this.data,
-  );
-
-  @override
-  final DocumentSnapshot<Profile> snapshot;
-
-  @override
-  ProfileDocumentReference get reference {
-    return ProfileDocumentReference(
-      snapshot.reference,
-    );
-  }
-
-  @override
-  final Profile? data;
 }
 
 abstract class ProfileQuery
@@ -598,37 +563,14 @@ class _$ProfileQuery extends QueryReference<Profile, ProfileQuerySnapshot>
 
   final CollectionReference<Object?> _collection;
 
-  ProfileQuerySnapshot _decodeSnapshot(
-    QuerySnapshot<Profile> snapshot,
-  ) {
-    final docs = snapshot.docs.map((e) {
-      return ProfileQueryDocumentSnapshot._(e, e.data());
-    }).toList();
-
-    final docChanges = snapshot.docChanges.map((change) {
-      return FirestoreDocumentChange<ProfileDocumentSnapshot>(
-        type: change.type,
-        oldIndex: change.oldIndex,
-        newIndex: change.newIndex,
-        doc: ProfileDocumentSnapshot._(change.doc, change.doc.data()),
-      );
-    }).toList();
-
-    return ProfileQuerySnapshot._(
-      snapshot,
-      docs,
-      docChanges,
-    );
-  }
-
   @override
   Stream<ProfileQuerySnapshot> snapshots([SnapshotOptions? options]) {
-    return reference.snapshots().map(_decodeSnapshot);
+    return reference.snapshots().map(ProfileQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
   Future<ProfileQuerySnapshot> get([GetOptions? options]) {
-    return reference.get(options).then(_decodeSnapshot);
+    return reference.get(options).then(ProfileQuerySnapshot._fromQuerySnapshot);
   }
 
   @override
@@ -1473,6 +1415,23 @@ class _$ProfileQuery extends QueryReference<Profile, ProfileQuerySnapshot>
   int get hashCode => Object.hash(runtimeType, reference);
 }
 
+class ProfileDocumentSnapshot extends FirestoreDocumentSnapshot<Profile> {
+  ProfileDocumentSnapshot._(this.snapshot) : data = snapshot.data();
+
+  @override
+  final DocumentSnapshot<Profile> snapshot;
+
+  @override
+  ProfileDocumentReference get reference {
+    return ProfileDocumentReference(
+      snapshot.reference,
+    );
+  }
+
+  @override
+  final Profile? data;
+}
+
 class ProfileQuerySnapshot
     extends FirestoreQuerySnapshot<Profile, ProfileQueryDocumentSnapshot> {
   ProfileQuerySnapshot._(
@@ -1480,6 +1439,38 @@ class ProfileQuerySnapshot
     this.docs,
     this.docChanges,
   );
+
+  factory ProfileQuerySnapshot._fromQuerySnapshot(
+    QuerySnapshot<Profile> snapshot,
+  ) {
+    final docs = snapshot.docs.map(ProfileQueryDocumentSnapshot._).toList();
+
+    final docChanges = snapshot.docChanges.map((change) {
+      return _decodeDocumentChange(
+        change,
+        ProfileDocumentSnapshot._,
+      );
+    }).toList();
+
+    return ProfileQuerySnapshot._(
+      snapshot,
+      docs,
+      docChanges,
+    );
+  }
+
+  static FirestoreDocumentChange<ProfileDocumentSnapshot>
+      _decodeDocumentChange<T>(
+    DocumentChange<T> docChange,
+    ProfileDocumentSnapshot Function(DocumentSnapshot<T> doc) decodeDoc,
+  ) {
+    return FirestoreDocumentChange<ProfileDocumentSnapshot>(
+      type: docChange.type,
+      oldIndex: docChange.oldIndex,
+      newIndex: docChange.newIndex,
+      doc: decodeDoc(docChange.doc),
+    );
+  }
 
   final QuerySnapshot<Profile> snapshot;
 
@@ -1493,18 +1484,18 @@ class ProfileQuerySnapshot
 class ProfileQueryDocumentSnapshot
     extends FirestoreQueryDocumentSnapshot<Profile>
     implements ProfileDocumentSnapshot {
-  ProfileQueryDocumentSnapshot._(this.snapshot, this.data);
+  ProfileQueryDocumentSnapshot._(this.snapshot) : data = snapshot.data();
 
   @override
   final QueryDocumentSnapshot<Profile> snapshot;
 
   @override
+  final Profile data;
+
+  @override
   ProfileDocumentReference get reference {
     return ProfileDocumentReference(snapshot.reference);
   }
-
-  @override
-  final Profile data;
 }
 
 // **************************************************************************
