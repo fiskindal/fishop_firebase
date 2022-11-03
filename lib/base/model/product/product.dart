@@ -1,17 +1,17 @@
-import 'package:fishop_firebase/base/model/customer_review/customer_review.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:cloud_firestore_odm/cloud_firestore_odm.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 part 'product.g.dart';
-
-@Collection<Product>('products')
-final productsRef = ProductCollectionReference();
 
 const firestoreSerializable = JsonSerializable(
     converters: firestoreJsonConverters,
     explicitToJson: true,
     createFieldMap: true);
 
+final productsRef = ProductCollectionReference();
+
+@Collection<Product>('products')
+@Collection<CustomerReview>('products/*/customerReviews')
 @firestoreSerializable
 class Product {
   @Id()
@@ -46,4 +46,22 @@ class Product {
   factory Product.fromJson(Map<String, Object?> json) =>
       _$ProductFromJson(json);
   Map<String, Object?> toJson() => _$ProductToJson(this);
+}
+
+@firestoreSerializable
+class CustomerReview {
+  CustomerReview({
+    this.id,
+    required this.reviewTitle,
+    required this.reviewFeedBack,
+    required this.reviewRating,
+  });
+  @Id()
+  final String? id;
+  final String? reviewTitle;
+  final String? reviewFeedBack;
+  final String? reviewRating;
+  factory CustomerReview.fromJson(Map<String, Object?> json) =>
+      _$CustomerReviewFromJson(json);
+  Map<String, Object?> toJson() => _$CustomerReviewToJson(this);
 }

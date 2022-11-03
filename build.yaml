@@ -1,0 +1,27 @@
+targets:
+  $default:
+    builders:
+      cloud_firestore_odm_generator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/*
+            - lib/**
+            - test_driver/integration/*
+            - test_driver/integration/**/*
+      json_serializable:
+        enabled: true
+        generate_for:
+          include:
+            - lib/*
+            - lib/**
+            - test_driver/integration/*
+            - test_driver/integration/**/*
+        options:
+          create_field_map: true
+          explicit_to_json: true
+          create_factory: true
+      source_gen|combining_builder:
+        options:
+          ignore_for_file:
+            - 'type=lint'
