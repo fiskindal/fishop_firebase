@@ -4,9 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 part 'product.g.dart';
 
 const firestoreSerializable = JsonSerializable(
-    converters: firestoreJsonConverters,
-    explicitToJson: true,
-    createFieldMap: true);
+  converters: firestoreJsonConverters,
+  explicitToJson: true,
+  createFieldMap: true,
+);
 
 final productsRef = ProductCollectionReference();
 

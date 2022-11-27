@@ -280,27 +280,40 @@ class _$ProductDocumentReference
       "Cannot specify both imgUrl and imgUrlFieldValue",
     );
     final json = {
-      if (title != _sentinel) 'title': title as String?,
-      if (titleFieldValue != null) 'title': titleFieldValue,
-      if (rating != _sentinel) 'rating': rating as double?,
-      if (ratingFieldValue != null) 'rating': ratingFieldValue,
-      if (stockCount != _sentinel) 'stockCount': stockCount as int?,
-      if (stockCountFieldValue != null) 'stockCount': stockCountFieldValue,
-      if (size != _sentinel) 'size': size as String?,
-      if (sizeFieldValue != null) 'size': sizeFieldValue,
-      if (productName != _sentinel) 'productName': productName as String?,
-      if (productNameFieldValue != null) 'productName': productNameFieldValue,
-      if (description != _sentinel) 'description': description as String?,
-      if (descriptionFieldValue != null) 'description': descriptionFieldValue,
-      if (trendProduct != _sentinel) 'trendProduct': trendProduct as bool?,
+      if (title != _sentinel) _$ProductFieldMap['title']!: title as String?,
+      if (titleFieldValue != null) _$ProductFieldMap['title']!: titleFieldValue,
+      if (rating != _sentinel) _$ProductFieldMap['rating']!: rating as double?,
+      if (ratingFieldValue != null)
+        _$ProductFieldMap['rating']!: ratingFieldValue,
+      if (stockCount != _sentinel)
+        _$ProductFieldMap['stockCount']!: stockCount as int?,
+      if (stockCountFieldValue != null)
+        _$ProductFieldMap['stockCount']!: stockCountFieldValue,
+      if (size != _sentinel) _$ProductFieldMap['size']!: size as String?,
+      if (sizeFieldValue != null) _$ProductFieldMap['size']!: sizeFieldValue,
+      if (productName != _sentinel)
+        _$ProductFieldMap['productName']!: productName as String?,
+      if (productNameFieldValue != null)
+        _$ProductFieldMap['productName']!: productNameFieldValue,
+      if (description != _sentinel)
+        _$ProductFieldMap['description']!: description as String?,
+      if (descriptionFieldValue != null)
+        _$ProductFieldMap['description']!: descriptionFieldValue,
+      if (trendProduct != _sentinel)
+        _$ProductFieldMap['trendProduct']!: trendProduct as bool?,
       if (trendProductFieldValue != null)
-        'trendProduct': trendProductFieldValue,
-      if (unitPrice != _sentinel) 'unitPrice': unitPrice as int?,
-      if (unitPriceFieldValue != null) 'unitPrice': unitPriceFieldValue,
-      if (category != _sentinel) 'category': category as String?,
-      if (categoryFieldValue != null) 'category': categoryFieldValue,
-      if (imgUrl != _sentinel) 'imgUrl': imgUrl as String?,
-      if (imgUrlFieldValue != null) 'imgUrl': imgUrlFieldValue,
+        _$ProductFieldMap['trendProduct']!: trendProductFieldValue,
+      if (unitPrice != _sentinel)
+        _$ProductFieldMap['unitPrice']!: unitPrice as int?,
+      if (unitPriceFieldValue != null)
+        _$ProductFieldMap['unitPrice']!: unitPriceFieldValue,
+      if (category != _sentinel)
+        _$ProductFieldMap['category']!: category as String?,
+      if (categoryFieldValue != null)
+        _$ProductFieldMap['category']!: categoryFieldValue,
+      if (imgUrl != _sentinel) _$ProductFieldMap['imgUrl']!: imgUrl as String?,
+      if (imgUrlFieldValue != null)
+        _$ProductFieldMap['imgUrl']!: imgUrlFieldValue,
     };
 
     return reference.update(json);
@@ -370,27 +383,40 @@ class _$ProductDocumentReference
       "Cannot specify both imgUrl and imgUrlFieldValue",
     );
     final json = {
-      if (title != _sentinel) 'title': title as String?,
-      if (titleFieldValue != null) 'title': titleFieldValue,
-      if (rating != _sentinel) 'rating': rating as double?,
-      if (ratingFieldValue != null) 'rating': ratingFieldValue,
-      if (stockCount != _sentinel) 'stockCount': stockCount as int?,
-      if (stockCountFieldValue != null) 'stockCount': stockCountFieldValue,
-      if (size != _sentinel) 'size': size as String?,
-      if (sizeFieldValue != null) 'size': sizeFieldValue,
-      if (productName != _sentinel) 'productName': productName as String?,
-      if (productNameFieldValue != null) 'productName': productNameFieldValue,
-      if (description != _sentinel) 'description': description as String?,
-      if (descriptionFieldValue != null) 'description': descriptionFieldValue,
-      if (trendProduct != _sentinel) 'trendProduct': trendProduct as bool?,
+      if (title != _sentinel) _$ProductFieldMap['title']!: title as String?,
+      if (titleFieldValue != null) _$ProductFieldMap['title']!: titleFieldValue,
+      if (rating != _sentinel) _$ProductFieldMap['rating']!: rating as double?,
+      if (ratingFieldValue != null)
+        _$ProductFieldMap['rating']!: ratingFieldValue,
+      if (stockCount != _sentinel)
+        _$ProductFieldMap['stockCount']!: stockCount as int?,
+      if (stockCountFieldValue != null)
+        _$ProductFieldMap['stockCount']!: stockCountFieldValue,
+      if (size != _sentinel) _$ProductFieldMap['size']!: size as String?,
+      if (sizeFieldValue != null) _$ProductFieldMap['size']!: sizeFieldValue,
+      if (productName != _sentinel)
+        _$ProductFieldMap['productName']!: productName as String?,
+      if (productNameFieldValue != null)
+        _$ProductFieldMap['productName']!: productNameFieldValue,
+      if (description != _sentinel)
+        _$ProductFieldMap['description']!: description as String?,
+      if (descriptionFieldValue != null)
+        _$ProductFieldMap['description']!: descriptionFieldValue,
+      if (trendProduct != _sentinel)
+        _$ProductFieldMap['trendProduct']!: trendProduct as bool?,
       if (trendProductFieldValue != null)
-        'trendProduct': trendProductFieldValue,
-      if (unitPrice != _sentinel) 'unitPrice': unitPrice as int?,
-      if (unitPriceFieldValue != null) 'unitPrice': unitPriceFieldValue,
-      if (category != _sentinel) 'category': category as String?,
-      if (categoryFieldValue != null) 'category': categoryFieldValue,
-      if (imgUrl != _sentinel) 'imgUrl': imgUrl as String?,
-      if (imgUrlFieldValue != null) 'imgUrl': imgUrlFieldValue,
+        _$ProductFieldMap['trendProduct']!: trendProductFieldValue,
+      if (unitPrice != _sentinel)
+        _$ProductFieldMap['unitPrice']!: unitPrice as int?,
+      if (unitPriceFieldValue != null)
+        _$ProductFieldMap['unitPrice']!: unitPriceFieldValue,
+      if (category != _sentinel)
+        _$ProductFieldMap['category']!: category as String?,
+      if (categoryFieldValue != null)
+        _$ProductFieldMap['category']!: categoryFieldValue,
+      if (imgUrl != _sentinel) _$ProductFieldMap['imgUrl']!: imgUrl as String?,
+      if (imgUrlFieldValue != null)
+        _$ProductFieldMap['imgUrl']!: imgUrlFieldValue,
     };
 
     transaction.update(reference, json);
@@ -2295,15 +2321,18 @@ class _$CustomerReviewDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both reviewRating and reviewRatingFieldValue",
     );
     final json = {
-      if (reviewTitle != _sentinel) 'reviewTitle': reviewTitle as String?,
-      if (reviewTitleFieldValue != null) 'reviewTitle': reviewTitleFieldValue,
+      if (reviewTitle != _sentinel)
+        _$CustomerReviewFieldMap['reviewTitle']!: reviewTitle as String?,
+      if (reviewTitleFieldValue != null)
+        _$CustomerReviewFieldMap['reviewTitle']!: reviewTitleFieldValue,
       if (reviewFeedBack != _sentinel)
-        'reviewFeedBack': reviewFeedBack as String?,
+        _$CustomerReviewFieldMap['reviewFeedBack']!: reviewFeedBack as String?,
       if (reviewFeedBackFieldValue != null)
-        'reviewFeedBack': reviewFeedBackFieldValue,
-      if (reviewRating != _sentinel) 'reviewRating': reviewRating as String?,
+        _$CustomerReviewFieldMap['reviewFeedBack']!: reviewFeedBackFieldValue,
+      if (reviewRating != _sentinel)
+        _$CustomerReviewFieldMap['reviewRating']!: reviewRating as String?,
       if (reviewRatingFieldValue != null)
-        'reviewRating': reviewRatingFieldValue,
+        _$CustomerReviewFieldMap['reviewRating']!: reviewRatingFieldValue,
     };
 
     return reference.update(json);
@@ -2331,15 +2360,18 @@ class _$CustomerReviewDocumentReference extends FirestoreDocumentReference<
       "Cannot specify both reviewRating and reviewRatingFieldValue",
     );
     final json = {
-      if (reviewTitle != _sentinel) 'reviewTitle': reviewTitle as String?,
-      if (reviewTitleFieldValue != null) 'reviewTitle': reviewTitleFieldValue,
+      if (reviewTitle != _sentinel)
+        _$CustomerReviewFieldMap['reviewTitle']!: reviewTitle as String?,
+      if (reviewTitleFieldValue != null)
+        _$CustomerReviewFieldMap['reviewTitle']!: reviewTitleFieldValue,
       if (reviewFeedBack != _sentinel)
-        'reviewFeedBack': reviewFeedBack as String?,
+        _$CustomerReviewFieldMap['reviewFeedBack']!: reviewFeedBack as String?,
       if (reviewFeedBackFieldValue != null)
-        'reviewFeedBack': reviewFeedBackFieldValue,
-      if (reviewRating != _sentinel) 'reviewRating': reviewRating as String?,
+        _$CustomerReviewFieldMap['reviewFeedBack']!: reviewFeedBackFieldValue,
+      if (reviewRating != _sentinel)
+        _$CustomerReviewFieldMap['reviewRating']!: reviewRating as String?,
       if (reviewRatingFieldValue != null)
-        'reviewRating': reviewRatingFieldValue,
+        _$CustomerReviewFieldMap['reviewRating']!: reviewRatingFieldValue,
     };
 
     transaction.update(reference, json);
